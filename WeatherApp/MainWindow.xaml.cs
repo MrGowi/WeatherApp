@@ -78,7 +78,7 @@ namespace WeatherApp
         {
             string query = textBoxQuery.Text;
 
-            UpdateData(query);
+            UpdateData(query); 
 
         }
     }
