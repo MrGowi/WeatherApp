@@ -31,10 +31,11 @@ namespace WeatherApp
         {
             InitializeComponent();
 
-            WeahterMapResponse result = GetWeatherData("Paris");
+            WeahterMapResponse result = GetWeatherData("Pratteln");
 
             string finalImage = "sun.png";
             string currentWeather = result.weather[0].main.ToLower();
+
 
             if (currentWeather.Contains("cloud"))
             {
@@ -51,6 +52,9 @@ namespace WeatherApp
 
             backgroundImage.ImageSource = new BitmapImage(new Uri("Images/" + finalImage, UriKind.Relative));
 
+            labelTemperature.Content = result.main.temp.ToString("F1") + "°C";
+            labelInfo.Content = result.weather[0].main;
+
         }
 
         public WeahterMapResponse GetWeatherData(string city)
@@ -58,8 +62,8 @@ namespace WeatherApp
             HttpClient httpClient = new HttpClient();
             var finalUri = requestUrl + "?q=" + city + "&appid=" + apiKey + "&units=metric";
             HttpResponseMessage httpResponse = httpClient.GetAsync(finalUri).Result;
-            string response = httpResponse.Content.ReadAsStringAsync().Result;
-            WeahterMapResponse weahterMapResponse = JsonConvert.DeserializeObject<WeahterMapResponse>(response);
+            string response = httpResponse.Content.ReadAsStringAsync().Result; 
+            WeahterMapResponse weahterMapResponse = JsonConvert.DeserializeObject<WeahterMapResponse>(response); //Wir Deserialisiseren den Json String "response" in einen "WeahterMapResponse"
             return weahterMapResponse;
 
         }

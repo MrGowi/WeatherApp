@@ -12,3 +12,4 @@ namespace WeatherApp
         public List<Weather> weather;
     }
 }
+

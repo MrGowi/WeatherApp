@@ -9,10 +9,60 @@
         ResizeMode="NoResize"
         >
     <Grid>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20">
+
+            </ColumnDefinition>
+            <ColumnDefinition>
+
+            </ColumnDefinition>
+            <ColumnDefinition>
+
+            </ColumnDefinition>
+            <ColumnDefinition Width="20">
+
+            </ColumnDefinition>
+            <ColumnDefinition>
+
+            </ColumnDefinition>
+            <ColumnDefinition Width="20">
+
+            </ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20">
+
+            </RowDefinition>
+            <RowDefinition>
+
+            </RowDefinition>
+            <RowDefinition>
+
+            </RowDefinition>
+            <RowDefinition>
+
+            </RowDefinition>
+            <RowDefinition Height="20">
+
+            </RowDefinition>
+        </Grid.RowDefinitions>
+
         <Grid.Background>
             <ImageBrush x:Name="backgroundImage" ImageSource="/WeatherApp;component/Images/Sun.png">
-                
+
             </ImageBrush>
         </Grid.Background>
+        <Label x:Name="labelTemperature" Grid.Row="2" Grid.Column="1" Content="Temp" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="100" FontWeight="Bold" Foreground="White">
+            <Label.Effect>
+                <DropShadowEffect ShadowDepth="5" BlurRadius="5" Color="Gray" Opacity="0.95"/>
+            </Label.Effect>
+        </Label>
+        <Label x:Name="labelInfo" Grid.Row="3" Grid.Column="1" Content="Info" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="40" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Top">
+            <Label.Effect>
+                <DropShadowEffect ShadowDepth="3" BlurRadius="5" Color="Gray" Opacity="0.95"/>
+            </Label.Effect>
+        </Label>
     </Grid>
 </Window>
