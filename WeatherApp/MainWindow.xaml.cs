@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Xml.Linq;
 using Newtonsoft.Json;
 
 namespace WeatherApp
@@ -31,7 +32,13 @@ namespace WeatherApp
         {
             InitializeComponent();
 
-            WeahterMapResponse result = GetWeatherData("Pratteln");
+            UpdateData("Basel");
+
+        }
+
+        public void UpdateData(string city)
+        {
+            WeahterMapResponse result = GetWeatherData(city);
 
             string finalImage = "sun.png";
             string currentWeather = result.weather[0].main.ToLower();
@@ -40,7 +47,7 @@ namespace WeatherApp
             if (currentWeather.Contains("cloud"))
             {
                 finalImage = "Cloud.png";
-            } 
+            }
             else if (currentWeather.Contains("rain"))
             {
                 finalImage = "Rain.png";
@@ -54,7 +61,6 @@ namespace WeatherApp
 
             labelTemperature.Content = result.main.temp.ToString("F1") + "°C";
             labelInfo.Content = result.weather[0].main;
-
         }
 
         public WeahterMapResponse GetWeatherData(string city)
@@ -65,6 +71,14 @@ namespace WeatherApp
             string response = httpResponse.Content.ReadAsStringAsync().Result; 
             WeahterMapResponse weahterMapResponse = JsonConvert.DeserializeObject<WeahterMapResponse>(response); //Wir Deserialisiseren den Json String "response" in einen "WeahterMapResponse"
             return weahterMapResponse;
+
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            string query = textBoxQuery.Text;
+
+            UpdateData(query);
 
         }
     }
