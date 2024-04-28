@@ -5,8 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WeatherApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="512" Width="1024" 
+        ResizeMode="NoResize"
+        >
     <Grid>
-        
+        <Grid.Background>
+            <ImageBrush x:Name="backgroundImage" ImageSource="/WeatherApp;component/Images/Sun.png">
+                
+            </ImageBrush>
+        </Grid.Background>
     </Grid>
 </Window>
